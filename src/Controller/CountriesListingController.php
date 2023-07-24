@@ -4,37 +4,31 @@ namespace Drupal\countries_rest_api\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
-use GuzzleHttp\ClientInterface;
+use Drupal\countries_rest_api\CountriesService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 
 class CountriesListingController extends ControllerBase {
 
   /**
-   * The http client service.
-   * 
-   * @var \GuzzleHttp\ClientInterface
+   * @var \Drupal\countries_rest_api\CountriesService
    */
-  private $http_client;
+  protected $countries_service;
 
   /**
-   * The logger channel service.
-   * 
-   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
+   * @var Drupal\Core\Logger\LoggerChannel
    */
-  private $logger;
+  protected $logger;
 
 
   /**
-   * Constructs a CountriesListing controller.
+   * Constructs a CountriesListing object.
    * 
-   * @param \GuzzleHttp\ClientInterface $http_client
-   *   The http client service.
    * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger
    *   The logger channel service.
    */
-  public function __construct(ClientInterface $http_client, LoggerChannelFactoryInterface $logger) {
-    $this->http_client = $http_client;
+  public function __construct(CountriesService $countries_service, LoggerChannelFactoryInterface $logger) {
+    $this->countries_service = $countries_service;
     $this->logger = $logger->get('countries_rest_api');
   }
 
@@ -43,13 +37,15 @@ class CountriesListingController extends ControllerBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('http_client'),
+      $container->get('countries_rest_api.countries'),
       $container->get('logger.factory')
     );  
   }
 
   public function content() {
     $build = [];
+
+
 
     return $build;
   }

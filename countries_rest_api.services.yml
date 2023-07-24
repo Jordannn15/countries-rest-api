@@ -1,0 +1,4 @@
+services:
+ countries_rest_api.countries:
+   class: Drupal\countries_rest_api\CountriesService
+   arguments: ['@http_client', '@logger.factory']
