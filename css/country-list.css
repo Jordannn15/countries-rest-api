@@ -25,7 +25,7 @@
   align-items: center;
 }
 
-.country-details h1,
+.country-details h3,
 .country-details span,
 .country-details p {
   text-align: center;
@@ -33,9 +33,13 @@
   font-family: p22-mackinac-pro, Times New Roman, serif;
 }
 
-.country-details h1 {
+.country-details h3 {
   font-size: 34px;
   margin: 5px 5px 10px 5px;
+}
+
+.country-details h3 a {
+  text-decoration: none;
 }
 
 .country-details span {

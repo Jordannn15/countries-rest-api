@@ -1,0 +1,17 @@
+<input type="text" id="country-name-search" placeholder="Search for names..">
+
+<div id="countries-container">
+{% if characteristics %}
+  {% for char in characteristics %}
+    <div class="country-details">
+      <h3>{{ link(char.name, char.url) }}</h3>
+      <div id="capital-container">
+        <span id="capital">Capital: </span><p>{{ char.capital }}</p>
+      </div>
+      <div id="region-container">
+        <span id="region">Region: </span><p>{{ char.region }}</p>
+      </div>
+    </div>
+  {% endfor %}
+{% endif %}
+</div>

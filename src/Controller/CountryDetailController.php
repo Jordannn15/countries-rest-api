@@ -3,33 +3,26 @@
 namespace Drupal\countries_rest_api\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\countries_rest_api\CountriesService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 
-class CountriesDetailController extends ControllerBase {
+class CountryDetailController extends ControllerBase {
 
   /**
    * @var \Drupal\countries_rest_api\CountriesService
    */
   protected $countries_service;
 
-  /**
-   * @var Drupal\Core\Logger\LoggerChannel
-   */
-  protected $logger;
-
 
   /**
    * Constructs a CountriesListing object.
    * 
-   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger
-   *   The logger channel service.
+   * @param \Drupal\countries_rest_api\CountriesService $countries_service
+   *  The Countries Service.
    */
-  public function __construct(CountriesService $countries_service, LoggerChannelFactoryInterface $logger) {
+  public function __construct(CountriesService $countries_service) {
     $this->countries_service = $countries_service;
-    $this->logger = $logger->get('countries_rest_api');
   }
 
   /**
@@ -38,14 +31,11 @@ class CountriesDetailController extends ControllerBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('countries_rest_api.countries'),
-      $container->get('logger.factory')
     );
   }
 
   public function content($name) {
     $countryDetails = $this->countries_service->getCountryByName($name)[0];
-
-    dump($countryDetails);
 
     $names = [
       'common_name' => $countryDetails['name']['common'],
@@ -65,5 +55,9 @@ class CountriesDetailController extends ControllerBase {
       '#timezone' => $countryDetails['timezones'][0],
       '#continent' => $countryDetails['continents'][0],
     ];
+  }
+
+  public function titleCallback($name) {
+    return "$name Details";
   }
 }

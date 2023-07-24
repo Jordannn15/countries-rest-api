@@ -2,6 +2,11 @@
 
 function countries_rest_api_theme() {
   return [
+    'country_list' => [
+      'variables' => [
+        'characteristics' => NULL,
+      ],
+    ],
     'country_details_list' => [
       'variables' => [
         'names' => NULL,

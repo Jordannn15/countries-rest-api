@@ -1,7 +1,12 @@
-countries_list:
+country_list:
   css:
     component:
-      css/countries-list.css: {}
+      css/country-list.css: {}
+  js:
+    js/country-name-search.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
 
 country_details:
   css:
