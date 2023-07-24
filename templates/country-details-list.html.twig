@@ -1,0 +1,48 @@
+{{ attach_library('countries_rest_api/country_details') }}
+
+<div id="country-details-container" class="row">
+  <div class="column" id="details-left">
+  {% if names %}
+    <div><span>Common Name:</span> {{ names.common_name }}</div>
+    <div><span>Official Name:</span> {{ names.official }}</div>
+  {% endif %}
+
+  {% if independent is not null %}
+    <div><span>Is Country Independent:</span> {{ independent ? 'Yes' : 'No' }}</div>
+  {% endif %}
+
+  {% if currency %}
+    <div><span>Currency:</span> {{ currency }}</div>
+  {% endif %}
+
+  {% if capital %}
+    <div><span>Capital:</span> {{ capital }}</div>
+  {% endif %}
+  </div>
+
+  <div class="column" id="details-right">
+  {% if region %}
+    <div><span>Region:</span> {{ region }}</div>
+  {% endif %}
+
+  {% if subregion %}
+    <div><span>Subregion:</span> {{ subregion }}</div>
+  {% endif %}
+
+  {% if languages %}
+    <div><span>Languages:</span> {{ languages|join(', ') }}</div>
+  {% endif %}
+
+  {% if maps %}
+    <div><span>Google Map View:</span> {{ link(maps, maps) }}</div>
+  {% endif %}
+
+  {% if timezone %}
+    <div><span>Timezone:</span> {{ timezone }}</div>
+  {% endif %}
+
+  {% if continent %}
+    <div><span>Continent:</span> {{ continent }}</div>
+  {% endif %}
+  </div>
+</div>

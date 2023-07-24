@@ -13,7 +13,7 @@
   flex-direction: column;
   align-items: center;
   border-style: solid;
-  border-color:green;
+  border-color:#00694e;
   width: 300px;
   height: auto;
   margin: 10px 10px;
@@ -30,6 +30,7 @@
 .country-details p {
   text-align: center;
   margin: 5px 5px;
+  font-family: p22-mackinac-pro, Times New Roman, serif;
 }
 
 .country-details h1 {
@@ -38,12 +39,18 @@
 }
 
 .country-details span {
-  color: green;
+  color: #00694e;
   font-size: 22px;
+  font-weight: 600;
 }
 
 .country-details p {
   font-size: 20px;
+}
+
+.country-details:hover {
+  cursor: pointer;
+  background: #F9F7ED;
 }
 
 @media (min-width: 992px) {

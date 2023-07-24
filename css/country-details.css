@@ -1,0 +1,29 @@
+#middle .middle-left {
+  display: none;
+}
+
+#country-details-container.row {
+  display: flex;
+  margin: auto;
+}
+
+#country-details-container .column {
+  flex: 50%;
+  font-family: p22-mackinac-pro, Times New Roman, serif;
+}
+
+#country-details-container .column div span {
+  color: #AA8A00;
+  font-size: 22px;
+}
+
+#country-details-container .column div a {
+  text-decoration: none;
+}
+
+@media (min-width: 992px) {
+  #middle .col-lg-9 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

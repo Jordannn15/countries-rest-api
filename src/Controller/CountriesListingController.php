@@ -2,6 +2,7 @@
 
 namespace Drupal\countries_rest_api\Controller;
 
+use Drupal\Core\Url;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\countries_rest_api\CountriesService;
@@ -69,16 +70,21 @@ class CountriesListingController extends ControllerBase {
         '#attributes' => [
           'class' => [ 'country-details' ],
         ],
-        'content' => [
-          '#markup' => "
-            <h1>$name</h1>
-            <div id='capital-container'>
-              <span id='capital'>Capital: </span><p>$capital</p>
-            </div>
-            <div id='region-container'>
-              <span id='region'>Region: </span><p>$region</p>
-            </div>
-          "
+        'link' => [
+          '#type' => 'link',
+          '#title' => $name,
+          '#url' => Url::fromRoute('country-details.content', ['name' => $name], []),
+          'content' => [
+            '#markup' => "
+              <h1>$name</h1>
+              <div id='capital-container'>
+                <span id='capital'>Capital: </span><p>$capital</p>
+              </div>
+              <div id='region-container'>
+                <span id='region'>Region: </span><p>$region</p>
+              </div>
+            "
+          ],
         ],
       ];
     }

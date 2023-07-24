@@ -1,0 +1,20 @@
+<?php
+
+function countries_rest_api_theme() {
+  return [
+    'country_details_list' => [
+      'variables' => [
+        'names' => NULL,
+        'independent' => NULL,
+        'currency' => NULL,
+        'capital' => NULL,
+        'region' => NULL,
+        'subregion' => NULL,
+        'languages' => NULL,
+        'maps' => NULL,
+        'timezone' => NULL,
+        'continent' => NULL
+      ],
+    ],
+  ];
+}

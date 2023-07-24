@@ -2,3 +2,8 @@ countries_list:
   css:
     component:
       css/countries-list.css: {}
+
+country_details:
+  css:
+    component:
+      css/country-details.css: {}

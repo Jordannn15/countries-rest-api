@@ -40,9 +40,27 @@ class CountriesService {
           ],
         ],
       );
-      
+
     } catch (Exception $e) {
       $this->logger->notice('Countries could not be fetched.');
+    }
+
+    return json_decode($response->getBody(), TRUE);
+  }
+
+  public function getCountryByName($name): array {
+    try {
+      $response = $this->http_client->get(
+        "https://restcountries.com/v3.1/name/$name",
+        [
+          'query' => [
+            'fullText' => TRUE,
+            'fields' => 'name,independent,currencies,capital,region,subregion,languages,timezones,continents,maps'
+          ],
+        ],
+      );
+    } catch (Exception $e) {
+      $this->logger->notice("Details for $name could not be fetched.");
     }
 
     return json_decode($response->getBody(), TRUE);

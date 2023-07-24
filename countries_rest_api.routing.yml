@@ -5,3 +5,11 @@ countries.content:
     _title: 'All Countries'
   requirements: 
     _permission: 'access content'
+
+country-details.content:
+  path: '/countries-listing/{name}/details'
+  defaults:
+    _controller: '\Drupal\countries_rest_api\Controller\CountriesDetailController:content'
+    _title: Country Details
+  requirements:
+    _permission: 'access content'
