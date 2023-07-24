@@ -1,0 +1,7 @@
+countries.content:
+  path: '/countries-listing' 
+  defaults: 
+    _controller: '\Drupal\countries_rest_api\Controller\CountriesListingController::content' 
+    _title: 'All Countries'
+  requirements: 
+    _permission: 'access content'
