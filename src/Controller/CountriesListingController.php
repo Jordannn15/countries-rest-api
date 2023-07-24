@@ -39,13 +39,49 @@ class CountriesListingController extends ControllerBase {
     return new static(
       $container->get('countries_rest_api.countries'),
       $container->get('logger.factory')
-    );  
+    );
   }
 
   public function content() {
-    $build = [];
+    $countriesList = $this->countries_service->getAllCountries();
 
+    $build = [
+      '#type' => 'container',
+      '#attributes' => [
+        'id' => 'countries-container',
+      ],
+      '#attached' => [
+        'library' => [ 'countries_rest_api/countries_list' ],
+      ],
+    ];
 
+    foreach ($countriesList as $country) {
+      if (!array_key_exists(0, $country['capital'])) {
+        continue;
+      }
+
+      $name = $country['name']['official'];
+      $capital = $country['capital'][0];
+      $region = $country['region'];
+
+      $build[] = [
+        '#type' => 'container',
+        '#attributes' => [
+          'class' => [ 'country-details' ],
+        ],
+        'content' => [
+          '#markup' => "
+            <h1>$name</h1>
+            <div id='capital-container'>
+              <span id='capital'>Capital: </span><p>$capital</p>
+            </div>
+            <div id='region-container'>
+              <span id='region'>Region: </span><p>$region</p>
+            </div>
+          "
+        ],
+      ];
+    }
 
     return $build;
   }

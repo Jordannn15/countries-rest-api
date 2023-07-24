@@ -32,12 +32,20 @@ class CountriesService {
 
   public function getAllCountries(): array {
     try {
-      $response = $this->http_client->get('https://restcountries.com/v3.1/all');
+      $response = $this->http_client->get(
+        'https://restcountries.com/v3.1/all',
+        [
+          'query' => [
+            'fields' => 'name,capital,region',
+          ],
+        ],
+      );
+      
     } catch (Exception $e) {
       $this->logger->notice('Countries could not be fetched.');
     }
 
-    return $response->getBody();
+    return json_decode($response->getBody(), TRUE);
   }
 
 }

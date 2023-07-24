@@ -1,0 +1,4 @@
+countries_list:
+  css:
+    component:
+      css/countries-list.css: {}
