@@ -2,64 +2,108 @@
   display: none;
 }
 
+#filters-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#search-by-name {
+  margin-right: 20px;
+}
+
+#country-name-search {
+  width: 300px;
+  height: 30px;
+}
+
+#region-filters input {
+  margin: 0 10px;
+  transform: scale(1.3);
+}
+
 #countries-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.country-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-style: solid;
-  border-color:#00694e;
-  width: 300px;
-  height: auto;
-  margin: 10px 10px;
-}
-
-.country-details div {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.country-details h3,
-.country-details span,
-.country-details p {
-  text-align: center;
-  margin: 5px 5px;
-  font-family: p22-mackinac-pro, Times New Roman, serif;
-}
-
-.country-details h3 {
-  font-size: 34px;
-  margin: 5px 5px 10px 5px;
-}
-
-.country-details h3 a {
+#countries-container a {
   text-decoration: none;
 }
 
-.country-details span {
-  color: #00694e;
-  font-size: 22px;
-  font-weight: 600;
+.country-details {
+  border-style: solid;
+  border-color: #024230;
+  width: 300px;
+  margin: 10px 10px;
 }
 
+.country-details #capital-container,
+.country-details #region-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.country-details h5,
+.country-details span,
 .country-details p {
+  text-align: center;
+  margin: 5px 2px;
+  font-family: p22-mackinac-pro, Times New Roman, serif;
+}
+
+.country-details span#capital,
+.country-details span#region {
+  color: #AA8A00;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.country-details div p {
   font-size: 20px;
+  color: #000000;
 }
 
 .country-details:hover {
-  cursor: pointer;
   background: #F9F7ED;
+}
+
+#countries-container .country-details a:focus div div span {
+  color: #AA8A00 !important;
+  background: transparent;
 }
 
 @media (min-width: 992px) {
   #middle .col-lg-9 {
     flex: 0 0 100%;
     max-width: 100%;
+  }
+}
+
+@media (max-width: 991px) {
+  #country-name-search {
+    width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  #filters-container {
+    flex-direction: column;
+  }
+
+  #search-by-name h5 {
+    text-align: center;
+  }
+
+  #region-filters h5 {
+    text-align: center;
+  }
+
+  #region-filters input {
+    margin: 0 3px;
+    transform: scale(1.1);
   }
 }

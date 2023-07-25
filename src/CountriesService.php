@@ -41,14 +41,14 @@ class CountriesService {
         ],
       );
 
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $this->logger->notice('Countries could not be fetched.');
     }
 
     return json_decode($response->getBody(), TRUE);
   }
 
-  public function getCountryByName($name): array {
+  public function getCountryByName($name) {
     try {
       $response = $this->http_client->get(
         "https://restcountries.com/v3.1/name/$name",
@@ -59,11 +59,16 @@ class CountriesService {
           ],
         ],
       );
-    } catch (Exception $e) {
+
+      if (!empty($response)) {
+        return json_decode($response->getBody(), TRUE);
+      }
+
+    } catch (\Exception $e) {
       $this->logger->notice("Details for $name could not be fetched.");
     }
 
-    return json_decode($response->getBody(), TRUE);
+    return [];
   }
 
 }

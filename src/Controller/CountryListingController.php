@@ -15,7 +15,6 @@ class CountryListingController extends ControllerBase {
    */
   protected $countries_service;
 
-
   /**
    * Constructs a CountriesListing object.
    * 
@@ -39,11 +38,14 @@ class CountryListingController extends ControllerBase {
     $countriesList = $this->countries_service->getAllCountries();
 
     $characteristics = [];
+    $regions = [];
 
     foreach ($countriesList as $country) {
       if (!array_key_exists(0, $country['capital'])) {
         continue;
       }
+
+      $regions[] = $country['region'];
 
       $name = $country['name']['official'];
 
@@ -54,6 +56,8 @@ class CountryListingController extends ControllerBase {
         'region' => $country['region'],
       ];
     }
+
+    $regions = array_unique($regions);
 
     return [
       '#theme' => 'country_list',

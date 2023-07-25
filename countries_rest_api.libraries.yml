@@ -3,10 +3,7 @@ country_list:
     component:
       css/country-list.css: {}
   js:
-    js/country-name-search.js: {}
-  dependencies:
-    - core/drupal
-    - core/once
+    js/country-filters.js: {}
 
 country_details:
   css:

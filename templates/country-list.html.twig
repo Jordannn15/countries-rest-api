@@ -1,16 +1,48 @@
-<input type="text" id="country-name-search" placeholder="Search for names..">
+<div id="filters-container">
+  <div id="search-by-name">
+    <h5>Filter by Name:</h5>
+    <input type="text" id="country-name-search" placeholder="Search for names..">
+  </div>
+
+  <div id="region-filters">
+    <h5>Filter by Region:</h5>
+    <div id="region-checkboxes">
+      <input type="checkbox" id="africa-filter" name="africa" value="africa" autocomplete="off">
+      <label for="africa-filter">Africa</label>
+
+      <input type="checkbox" id="americas-filter" name="americas" value="americas" autocomplete="off">
+      <label for="americas-filter">Americas</label>
+
+      <input type="checkbox" id="antarctic-filter" name="antarctic" value="antarctic" autocomplete="off">
+      <label for="antarctic-filter">Antarctic</label>
+
+      <input type="checkbox" id="asia-filter" name="asia" value="asia" autocomplete="off">
+      <label for="asia-filter">Asia</label>
+
+      <input type="checkbox" id="europe-filter" name="europe" value="europe" autocomplete="off">
+      <label for="europe-filter">Europe</label>
+
+      <input type="checkbox" id="oceania-filter" name="oceania" value="oceania" autocomplete="off">
+      <label for="oceania-filter">Oceania</label>
+    </div>
+  </div>
+</div>
 
 <div id="countries-container">
 {% if characteristics %}
   {% for char in characteristics %}
     <div class="country-details">
-      <h3>{{ link(char.name, char.url) }}</h3>
-      <div id="capital-container">
-        <span id="capital">Capital: </span><p>{{ char.capital }}</p>
-      </div>
-      <div id="region-container">
-        <span id="region">Region: </span><p>{{ char.region }}</p>
-      </div>
+      <a href="{{ char.url }}">
+        <div>
+          <h5>{{ char.name }}</h5>
+          <div id="capital-container">
+            <span id="capital">Capital: </span> <p>{{ char.capital }}</p>
+          </div>
+          <div id="region-container">
+            <span id="region">Region: </span> <p>{{ char.region }}</p>
+          </div>
+        </div>
+      </a>
     </div>
   {% endfor %}
 {% endif %}
